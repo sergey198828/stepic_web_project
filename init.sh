@@ -1,5 +1,5 @@
-mkdir web/uploads
-mkdir -p web/public/{css,img,js}
+mkdir uploads
+mkdir -p public/{css,img,js}
 
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /home/box/web/etc/nginx.conf /etc/nginx/sites-enabled/test.conf
