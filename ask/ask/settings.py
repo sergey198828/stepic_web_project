@@ -25,7 +25,7 @@ SECRET_KEY = '$yn!#e5qe0inhcgr#iepy*q@cb(0kun%3a5dbz&^2-d9oucw-p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
