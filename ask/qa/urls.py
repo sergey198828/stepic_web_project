@@ -1,17 +1,17 @@
 from django.conf.urls import url
-import views
+from .views import stub, question
 
 urlpatterns = [
     # /login/
-    url(r'^login/$', views.stub, name="sign-in"),
+    url(r'^login/$', stub, name="sign-in"),
     # /signup/
-    url(r'^signup/$', views.stub, name="sign-up"),
+    url(r'^signup/$', stub, name="sign-up"),
     # /question/<123>/
-    url(r'^question/(\d+)/$', views.question, name="view-question"),
+    url(r'^question/(\d+)/$', question, name="view-question"),
     # /ask/
-    url(r'^ask/$', views.stub, name="ask-question"),
+    url(r'^ask/$', stub, name="ask-question"),
     # /popular/
-    url(r'^popular/$', views.stub, name="top-questions"),
+    url(r'^popular/$', stub, name="top-questions"),
     # /new/
-    url(r'^new/$', views.stub, name="latest-questions"),
+    url(r'^new/$', stub, name="latest-questions"),
 ]
