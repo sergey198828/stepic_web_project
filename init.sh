@@ -1,11 +1,17 @@
+# Create nessesary folders for static
 mkdir uploads
 mkdir -p public/{css,img,js}
 
+# Configure and run NGINX
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /home/box/web/etc/nginx.conf /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
-sudo rm /etc/gunicorn.d/wsgi.example
-sudo rm /etc/gunicorn.d/django.example
-sudo ln -s /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/test.conf
-sudo /etc/init.d/gunicorn restart
-#sudo /etc/init.d/mysql start
+
+# Run hello-world app as wsgi
+gunicorn --bind='0.0.0.0:8080' hello:wsgi_application
+
+# Create Django project "ask" and application "qa" then start it
+django-admin startproject ask
+cd ask
+python manage.py startapp qa
+gunicorn --bind='0.0.0.0:8000' ask.wsgi
