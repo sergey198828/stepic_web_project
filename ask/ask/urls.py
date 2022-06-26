@@ -15,12 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from ..qa.views import home as qa_home
+
 
 urlpatterns = [
-    # Project homepage
-    url(r'^$', qa_home, name='home'),
-    # Project pages
+    # QA project pages
     url(r'^', include('qa.urls')),
     # Admin page
     url(r'^admin/', admin.site.urls),

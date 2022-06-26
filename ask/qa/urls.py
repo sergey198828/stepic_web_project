@@ -1,7 +1,9 @@
 from django.conf.urls import url
-from .views import stub, question
+from .views import home, stub, question
 
 urlpatterns = [
+    # /
+    url(r'^$', home, name="sign-in"),
     # /login/
     url(r'^login/$', stub, name="sign-in"),
     # /signup/
