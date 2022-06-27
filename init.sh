@@ -17,3 +17,10 @@ gunicorn --bind='0.0.0.0:8080' hello:wsgi_application &
 # Create Django project "ask" and application "qa" then start it
 cd ask
 gunicorn --bind='0.0.0.0:8000' ask.wsgi &
+
+# Setup and run database
+sudo /etc/init.d/mysql start
+mysql -u root -e "CREATE USER 'django'@'localhost' IDENTIFIED BY 'P@ssw0rd';"
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS ask_qa;"
+mysql -u root -e "GRANT ALL ON ask_qa.* TO 'django'@'localhost';"
+manage.py syncdb
