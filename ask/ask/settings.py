@@ -82,6 +82,9 @@ DATABASES = {
         'NAME': 'ask_qa',
         'USER': 'django',
         'PASSWORD': 'P@ssw0rd',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
