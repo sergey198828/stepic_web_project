@@ -23,4 +23,6 @@ sudo /etc/init.d/mysql start
 mysql -u root -e "CREATE USER 'django'@'localhost' IDENTIFIED BY 'P@ssw0rd';"
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS ask_qa;"
 mysql -u root -e "GRANT ALL ON ask_qa.* TO 'django'@'localhost';"
-python manage.py syncdb
+python manage.py check
+python manage.py makemigrations
+python manage.py migrate
