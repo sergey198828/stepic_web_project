@@ -4,14 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Question(models):
-    """Question - вопрос
-    title - заголовок вопроса
-    text - полный текст вопроса
-    added_at - дата добавления вопроса
-    rating - рейтинг вопроса (число)
-    author - автор вопроса
-    likes - список пользователей, поставивших лайк """
+class Question(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
@@ -21,9 +14,6 @@ class Question(models):
 
 
 class QuestionManager(models.Manager):
-    """QuestionManager - менеджер модели Question
-    new - метод возвращающий последние добавленные вопросы
-    popular - метод возвращающий вопросы отсортированные по рейтингу"""
     def new(self):
         return self.order_by('-added_at')
 
@@ -31,12 +21,7 @@ class QuestionManager(models.Manager):
         return self.order_by('-rating')
 
 
-class Answer(models):
-    """Answer - ответ
-    text - текст ответа
-    added_at - дата добавления ответа
-    question - вопрос, к которому относится ответ
-    author - автор ответа"""
+class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateField(auto_now_add=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
